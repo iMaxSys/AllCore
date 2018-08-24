@@ -8,6 +8,9 @@ using AllCore.Models;
 namespace AllCore.EFCore
 {
     /*
+     * 
+     * Add-Migration v1.0.0
+       Update-Database v1.0.0
      
      延迟加载需要引用Microsoft.EntityFrameworkCore.Proxies,导航属性virtual修饰
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
@@ -110,8 +113,9 @@ namespace AllCore.EFCore
             builder.Property(x => x.ActivityId).HasColumnName("activity_id").IsRequired();
             builder.Property(x => x.GoodsId).HasColumnName("goods_id").IsRequired();
             builder.Property(x => x.Price).HasColumnName("price").IsRequired().HasColumnType("decimal(10,2)");
-            builder.HasOne(x => x.Activity).WithMany(y => y.Items).HasForeignKey(k => k.ActivityId);
-            builder.HasOne(x => x.Goods).WithOne(y => y.ActivityItem).HasForeignKey<ActivityItem>(k => k.GoodsId);
+            builder.HasOne(x => x.Activity).WithMany(y => y.Items).HasForeignKey(k => k.ActivityId).OnDelete(DeleteBehavior.Restrict);
+            //one to zero or one
+            builder.HasOne(x => x.Goods).WithOne(y => y.ActivityItem).HasForeignKey<ActivityItem>(k => k.GoodsId).OnDelete(DeleteBehavior.Restrict);
             builder.ToTable("activity_item");
         }
     }
