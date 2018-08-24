@@ -16,7 +16,6 @@ using Newtonsoft.Json;
 
 using AllCore.EFCore;
 
-
 namespace AllCore
 {
     public class Startup
