@@ -15,7 +15,7 @@ namespace AllCore.EFCore
     */
 
     /// <summary>
-    /// 
+    /// XContext
     /// </summary>
     public class XContext : DbContext
     {
@@ -26,6 +26,7 @@ namespace AllCore.EFCore
 
         public XContext(DbContextOptions<XContext> options) : base(options)
         {
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
