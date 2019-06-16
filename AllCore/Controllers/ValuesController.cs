@@ -27,7 +27,8 @@ namespace AllCore.Controllers
             //注意循环引用
             //Activity activity = _context.Activities.Include(x => x.Items).ThenInclude(y => y.Goods).ThenInclude(z=>z.Catalog).FirstOrDefault();
             //return activity;
-
+            //string x1 = "baby";
+            //x1 = "xxx";
             //List<Goods> goods = await _context.Goods.Include(o=>o.Catalog).Include(x => x.ActivityItem).ThenInclude(y => y.Activity).ToListAsync();
             List<Goods> goods = await _context.Goods.Include(o => o.Catalog).ToListAsync();
             return goods;
